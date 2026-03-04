@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>...</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#ffffff;
+  font-family:'Lato',sans-serif;
+  color:#333;
+}
+
+.container{
+  text-align:center;
+  max-width:400px;
+  width:90%;
+}
+
+h1{
+  font-family:'Dancing Script',cursive;
+  font-size:34px;
+  margin-bottom:25px;
+  font-weight:600;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  font-size:16px;
+  border:1px solid #ccc;
+  border-radius:12px;
+  outline:none;
+  transition:.3s;
+}
+
+input:focus{
+  border-color:#999;
+}
+
+.error{
+  margin-top:15px;
+  color:#c0392b;
+  font-size:14px;
+  opacity:0;
+  transition:.3s;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Когда ты родилась?</h1>
+  <input type="text" id="dateInput" placeholder="Введи дату в формате 01.01.2026">
+  <div class="error" id="errorText">
+    Кажется это не моя принцесса!
+  </div>
+</div>
+
+<script>
+const input = document.getElementById("dateInput");
+const errorText = document.getElementById("errorText");
+
+input.addEventListener("keydown", function(e){
+  if(e.key === "Enter"){
+    checkDate();
+  }
+});
+
+input.addEventListener("blur", checkDate);
+
+function checkDate(){
+  const value = input.value.trim();
+  
+  if(value === "20.11.2006"){
+    window.location.href = "main.html";
+  } else if(value.length > 0){
+    errorText.style.opacity = "1";
+    input.value = "";
+  }
+}
+</script>
+
+</body>
+</html>
